@@ -20,7 +20,7 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+                        th:checked="${column.key == ''}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
 
@@ -36,8 +36,20 @@
 
     <hr />
 
-    <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
+
+    <!-- loops through the array -->
+    <div th:fragment="list-jobs">
+        <div th:each="arrayJobs: ${jobs}">
+            <!-- loops through the hashmap -->
+            <table class="job-listing"  >
+                <tr th:each="jobEntry : ${arrayJobs}">
+                    <td th:text="${jobEntry.key}"></td>
+                    <td th:text="${jobEntry.value}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 
 </body>
